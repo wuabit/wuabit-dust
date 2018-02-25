@@ -22,13 +22,14 @@
 #include <Entropy.h>
 
 //Uncomment this to generate a continuous flow of keys to analyze:
-#define TEST_PRNG
+//#define TEST_PRNG
 
 //Magic number to know if the device is initialized with a stored key. Change it to reset.
 #define STATE_INITIALIZED 0xAC
 
 Sha256Context ctx;
 uint8_t hash[33];
+
 #define HASH_SIZE sizeof(hash) - 1
 
 #ifdef TEST_PRNG
