@@ -61,9 +61,9 @@ void sendHash()
 }
 
 void setup()
-{
-  Entropy.initialize();
+{  
 #ifdef TEST_PRNG
+  Entropy.initialize();
   //setup LED pin for output in port B's direction register
   DDRB |= (1 << LED);  
 #else
@@ -72,6 +72,7 @@ void setup()
   state = hash[HASH_SIZE];
   if (state != STATE_INITIALIZED)
   {
+    Entropy.initialize();
     sha256_init(&ctx);
     for (uint8_t i = 0; i < HASH_SIZE; i += sizeof(uint32_t))
     {
