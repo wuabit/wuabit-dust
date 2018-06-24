@@ -15,11 +15,11 @@ Pull requests are always welcome.
 * 32 bytes of key length generation (256 bits)
 * High entropy of > 7.99 bits per byte (see [tests](tests/) and compare to eg. [Trezor random tests](https://github.com/trezor/rng-test)).
 * Stores key/pass in internal [eeprom](https://en.wikipedia.org/wiki/EEPROM) memory with more than 100,000 cycles of writes assured.
-* Uses the ATtiny85 microcontroller from Atmel, one of the most ubiquitous 8-bit mcu.
+* Uses the [ATtiny85](https://www.microchip.com/wwwproducts/en/ATtiny85) microcontroller from [Atmel](https://en.wikipedia.org/wiki/Atmel) now [MicroChip](https://www.microchip.com), one of the most ubiquitous 8-bit mcu.
 
 ## How it works
 
-This version of **Wuabit Dust** generates **ONE UNIQUE KEY** and stores it in the permanent memory (eeprom) of the ATtiny85. To reset the device to generate another key, a manual reprogramming is needed.
+This version of **Wuabit Dust** generates **ONE UNIQUE KEY** and stores it in the permanent memory (eeprom) of the ATtiny85. But it's able to generate **MANY KEYS**.  **To force the device to generate another key, just leave it connected for a while (1min)**.
 
 * Plug it to an USB port (works even in Android with USB-OTG)
 * First time will check if its initialized.
@@ -30,17 +30,21 @@ This version of **Wuabit Dust** generates **ONE UNIQUE KEY** and stores it in th
 
 The next time the device is plugged-in the same stored key will be sent.
 
+If device is left connected after it sent the key from eeprom, a timeout starts and the onboard led will begin to flash slowly, then faster and faster until regenerates another key, **overwriting the previous stored key**.
+
 ## Security warning
 
 This device generates a key in hardware, but writes it via usb-keyboard emulation, so if the target machine is compromised with a keylogger then the key can be stolen. The same if it's sent to a compromised/evil online service etc...
 
-## Installation
+## Installation/Build
 
-Currently is a manual process requiring the [Arduino IDE](https://www.arduino.cc/en/Main/Software) installed, then:
+The installation and build process is managed multiplatform by [PlatformIO](https://platformio.org) [CORE](http://docs.platformio.org/en/latest/core.html) or [IDE](http://docs.platformio.org/en/latest/ide/pioide.html). It can be easily [installed](http://docs.platformio.org/page/installation.html) in any OS with python.
 
-* [Install *Digispark* support to the Arduino IDE](https://digistump.com/wiki/digispark/tutorials/connecting)
-* Install *Entropy* library from [here](https://github.com/mrmx/Arduino-Entropy-Library)
-* Download and install this *Wuabit Dust* version via inserting a *Digispark* board when the IDE prompts for it.
+Once installed simply execute (on cli core):
+
+> platformio run -t upload
+
+Or click _upload_ via the IDE. 
 
 
 ## Credits 

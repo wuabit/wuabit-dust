@@ -12,17 +12,18 @@ Here is a photo of the device:
 
 * Plug-and-play: As it works as a standard USB keyboard
 * Stores key/pass in internal [eeprom](https://en.wikipedia.org/wiki/EEPROM) memory with more than 100,000 cycles of writes assured.
-* Uses the ATtiny85 microcontroller from Atmel, one of the most ubiquitous 8-bit mcu.
+* Uses the [ATtiny85](https://www.microchip.com/wwwproducts/en/ATtiny85) microcontroller from [Atmel](https://en.wikipedia.org/wiki/Atmel) now [MicroChip](https://www.microchip.com), one of the most ubiquitous 8-bit mcu.
 
 ## How it works
 
 **Wuabit Dust** generates keys/passwords by simply connecting it to a free USB port (works even in Android with USB-OTG).
 
-# Current Versions:
+## Versions:
 
-* [vSHA-256](wuabit-dust-sha256): Generates **one single key**.
+* [vSHA-256](https://github.com/wuabit/wuabit-dust/tree/v1.0-arduino/wuabit-dust-sha256): v1.0 Generates **one single key** ([Arduino](https://www.arduino.cc) based).
+* [vSHA-256](wuabit-dust-sha256): Generates **many keys** ([PlatformIO](https://platformio.org) based).
 
-More versions to come, stay tuned to this repo!
+
 
 ## Security warning
 
